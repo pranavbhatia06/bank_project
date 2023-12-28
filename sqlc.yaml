@@ -1,0 +1,14 @@
+version: "2"
+cloud:
+    # Replace <PROJECT_ID> with your project ID from the sqlc Cloud dashboard
+    project: "01HJBRZ1ENPST0Y3KNBXZK08P8"
+sql:
+    - engine: "postgresql"
+      queries: "./db/query/"
+      schema: "./db/migration/"
+      database:
+        uri: "postgres://root:password@192.168.1.3:5432/simple_bank?sslmode=disable"
+      gen:
+        go:
+          out: "./db/sqlc"
+          sql_package: "database/sql"
