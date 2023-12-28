@@ -50,10 +50,10 @@ type TransferTxResult struct {
 
 func (s *Store) TransferTx(ctx context.Context, transferParam TransferTxParam) (TransferTxResult, error) {
 	var result TransferTxResult
-	debugLog := ctx.Value(struct{}{})
+	//debugLog := ctx.Value(struct{}{})
 	err := s.execTx(ctx, func(q *Queries) error {
 		var err error
-		fmt.Println(debugLog, "Create transfer")
+		//fmt.Println(debugLog, "Create transfer")
 		result.Transfer, err = q.CreateTransfer(ctx, CreateTransferParams{
 			FromAccountID: transferParam.FromAccountID,
 			ToAccountID:   transferParam.ToAccountID,
@@ -63,7 +63,7 @@ func (s *Store) TransferTx(ctx context.Context, transferParam TransferTxParam) (
 		if err != nil {
 			return err
 		}
-		fmt.Println(debugLog, "Create Entry 2")
+		//fmt.Println(debugLog, "Create Entry 2")
 		result.ToEntry, err = q.CreateEntry(ctx, CreateEntryParams{
 			AccountID: transferParam.ToAccountID,
 			Amount:    transferParam.Amount,
@@ -71,7 +71,7 @@ func (s *Store) TransferTx(ctx context.Context, transferParam TransferTxParam) (
 		if err != nil {
 			return err
 		}
-		fmt.Println(debugLog, "Create Entry 1")
+		//fmt.Println(debugLog, "Create Entry 1")
 		result.FromEntry, err = q.CreateEntry(ctx, CreateEntryParams{
 			AccountID: transferParam.FromAccountID,
 			Amount:    -(transferParam.Amount),
@@ -95,8 +95,8 @@ func (s *Store) TransferTx(ctx context.Context, transferParam TransferTxParam) (
 	return result, err
 }
 func (s *Store) updateAccountsBalance(ctx context.Context, account1Id int64, account2Id int64, amount1 int64, amount2 int64, result *TransferTxResult) error {
-	debugLog := ctx.Value(struct{}{})
-	fmt.Println(debugLog, "Add Amount Account 1")
+	//debugLog := ctx.Value(struct{}{})
+	//fmt.Println(debugLog, "Add Amount Account 1")
 	account1, err := s.AddAmountToAccount(ctx, AddAmountToAccountParams{
 		Amount: amount1,
 		ID:     account1Id,
@@ -104,7 +104,7 @@ func (s *Store) updateAccountsBalance(ctx context.Context, account1Id int64, acc
 	if err != nil {
 		return err
 	}
-	fmt.Println(debugLog, "Add Amount Account 2")
+	//fmt.Println(debugLog, "Add Amount Account 2")
 	account2, err := s.AddAmountToAccount(ctx, AddAmountToAccountParams{
 		Amount: amount2,
 		ID:     account2Id,
