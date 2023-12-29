@@ -12,3 +12,4 @@ sql:
         go:
           out: "./db/sqlc"
           sql_package: "database/sql"
+          emit_empty_slices: true
