@@ -7,7 +7,7 @@ sql:
       queries: "./db/query/"
       schema: "./db/migration/"
       database:
-        uri: "postgres://root:password@192.168.1.3:5432/simple_bank?sslmode=disable"
+        uri: "postgres://root:password@192.168.1.7:5432/simple_bank?sslmode=disable"
       gen:
         go:
           out: "./db/sqlc"

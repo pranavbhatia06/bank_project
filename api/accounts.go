@@ -73,7 +73,7 @@ func (s *Server) listAccount(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, errResponse(err))
 		return
 	}
-	accounts, err := s.store.ListAccount(ctx, db.ListAccountParams{
+	accounts, err := s.store.ListAccounts(ctx, db.ListAccountsParams{
 		Offset: req.PageSize * req.PageNo,
 		Limit:  req.PageSize,
 	})
