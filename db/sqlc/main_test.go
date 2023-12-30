@@ -13,7 +13,7 @@ var queries *Queries
 var testDb *sql.DB
 
 func TestMain(m *testing.M) {
-	cnf, err := util.LoadConfig("../cnf")
+	cnf, err := util.LoadConfig("../../cnf")
 	if err != nil {
 		log.Fatalf("unable to Load config: %v", err)
 	}
