@@ -1,0 +1,12 @@
+title = "Bank Project"
+
+[application]
+    AppEnv  = "default"
+    LISTEN_IP = "0.0.0.0:8080"
+
+[database]
+     DIALECT = "postgres"
+     PORT = "5432"
+     HOST = "192.168.1.3"
+     DBNAME = "simple_bank"
+     SSLMODE = "disable"
